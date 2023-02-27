@@ -773,16 +773,15 @@ def signup(request):
         email = request.POST['email']
         first_name = request.POST['first']
         last_name = request.POST['second']
-        a = User.objects.get(username=username)
-        if not a:
+        try:
+            a = User.objects.get(username=username)
+            messages.info(request,"user already exists")
+            return redirect(user_login)
+        except DoesNotExist:
             user = User.objects.create_user(username=username,password=password, email=email, first_name=first_name, last_name=last_name)
             user.save()
             messages.success(request, 'Sign up successful!')
             return redirect(user_login)
-        else:
-            messages.info(request,"user already exists")
-            return redirect(signup)
-
     return render(request,'register.html')
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
