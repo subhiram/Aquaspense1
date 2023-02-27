@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>graphs page</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.0/dist/chart.umd.min.js"></script>
+    <style>
+        .container{
+            width: 500px;
+            height: 500px;
+
+        }
+        body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+}
+
+.dough {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 100px 0;
+    width: 700px;
+    height: 700px;
+}
+
+h1 {
+    color: #333;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+canvas {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+    </style>
+</head>
+        <script>
+            var graph1_labels = {{ graph1_labels|safe }};
+            var graph1_data = {{ graph1_data|safe }};
+            var graph2_labels = {{ graph2_labels|safe }};
+            var graph2_data = {{ graph2_data|safe }};
+            var a1_label = {{ a1_label|safe }};
+            var a1_total = {{ a1_total|safe}};
+            var a2_label = {{ a2_label|safe }};
+            var a2_total = {{ a2_total|safe }};
+            var b1_label = {{ b1_label|safe }};
+            var b1_total = {{ b1_total|safe }};
+            var b2_label = {{ b2_label|safe }};
+            var b2_total = {{ b2_total|safe }};
+            var graph4_label = {{ graph4_label|safe }};
+            var graph4_data = {{ graph4_data|safe }};
+            var graph5_label = {{ graph5_label|safe }};
+            var graph5_data = {{ graph5_data|safe }};
+
+        </script>
+<body>
+<!-- graph1 is a bar graph which compares the expenses, worker expenses, electrical bills-->
+<h1> hi {{ user.first_name }}</h1>
+              {% if not crops %}
+                  <h1>Please add a new crop </h1>
+              {% endif %}
+                  <!--for loop here -->
+                  <h2>Ongoing crops</h2>
+              {% for crop in crops %}
+                <a style="text-decoration: none" href="/dashboard/{{ crop.crop_id }}" >
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="clearfix">
+                        <label><h3>Name:</h3></label>
+                        <h3 class="card-title float-left">{{ crop.crop_name}}</h3>
+                        <label><h3>Crop date: </h3></label>
+                      <h3 class="card-title float-left"> {{ crop.crop_date}}</h3>
+                        <label><h3>Crop location:  </h3></label>
+                      <h3 class="card-title float-left">{{ crop.location}}</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                    {% endfor %}
+
+                  </a>
+              <h2>Completed crops</h2>
+              {% if crops1 %}
+              {% for crop1 in crops1 %}
+              <a style="text-decoration: none" href="/dashboard/{{ crop1.crop_id }}" >
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="clearfix">
+                        <label><h3>Name:</h3></label>
+                        <h3 class="card-title float-left">{{ crop1.crop_name}}</h3>
+                        <label><h3>Crop date: </h3></label>
+                      <h3 class="card-title float-left"> {{ crop1.crop_date}}</h3>
+                        <label><h3>Crop location:  </h3></label>
+                      <h3 class="card-title float-left">{{ crop1.location}}</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </a>
+                  {% endfor %}
+
+              {% else %}
+              <h5>No completed crops</h5>
+              {% endif %}
+                  <!--end your for loop here -->
+         <div class="dough">
+             <canvas id="graph1"></canvas>
+         </div>
+         <div class="dough">
+             <canvas id="graph2"></canvas>
+         </div>
+         <div class="dough">
+             <canvas id="graph31"></canvas>
+         </div>
+         <div class="dough">
+             <canvas id="graph32"></canvas>
+         </div>
+         <div class="dough">
+             <canvas id="graph33"></canvas>
+         </div>
+         <div class="dough">
+             <canvas id="graph34"></canvas>
+         </div>
+         <div class="dough">
+             <canvas id="graph4"></canvas>
+         </div>
+         <div class="dough">
+             <canvas id="graph5"></canvas>
+         </div>
+<script>
+    window.alert(a1_label);
+</script>
+          <script type="text/javascript">
+            var g1 = document.getElementById('graph1');
+            new Chart(g1, {
+              type: 'bar',
+              data: {
+                labels: graph1_labels,
+                datasets: [{
+                  label: 'amount spent',
+                  data: graph1_data,
+
+                }]
+              },
+              options: {
+
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          </script>
+          <script type="text/javascript">
+            var g1 = document.getElementById('graph2');
+            new Chart(g1, {
+              type: 'doughnut',
+              data: {
+                labels: graph2_labels,
+                datasets: [{
+                  label: 'amount spent',
+                  data: graph2_data,
+
+                }]
+              },
+              options: {
+
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          </script>
+<!-- graph 3-->
+          <script type="text/javascript">
+            var g1 = document.getElementById('graph31');
+            new Chart(g1, {
+              type: 'line',
+              data: {
+                labels: a1_label,
+                datasets: [{
+                  label: 'tank A1',
+                  data: a1_total,
+
+                }]
+              },
+              options: {
+                  animation: {
+                      onComplete: ()=>{
+                          delayed: true;
+                      },
+                      delay: (context) =>{
+                      let delay=0;
+                      console.log(context.data)
+                      console.log(context.mode)
+                      if (context.type === 'data' && context.mode==='default'){
+                          delay = context.dataIndex * 300;
+                      }
+                      return delay
+                    }
+
+                  },
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          </script>
+<!-- graph 32-->
+          <script type="text/javascript">
+            var g1 = document.getElementById('graph32');
+            new Chart(g1, {
+              type: 'line',
+              data: {
+                labels: a2_label,
+                datasets: [{
+                  label: 'tank A2',
+                  data: a2_total,
+
+                }]
+              },
+              options: {
+
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          </script>
+<!-- graph 33-->
+          <script type="text/javascript">
+            var g1 = document.getElementById('graph33');
+            new Chart(g1, {
+              type: 'line',
+              data: {
+                labels: b1_label,
+                datasets: [{
+                  label: 'tank B1',
+                  data: b1_total,
+
+                }]
+              },
+              options: {
+
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          </script>
+<!-- graph 34-->
+          <script type="text/javascript">
+            var g1 = document.getElementById('graph34');
+            new Chart(g1, {
+              type: 'line',
+              data: {
+                labels: b2_label,
+                datasets: [{
+                  label: 'tank B2',
+                  data: b2_total,
+
+                }]
+              },
+              options: {
+
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          </script>
+<!-- graph 4-->
+          <script type="text/javascript">
+            var g1 = document.getElementById('graph4');
+            new Chart(g1, {
+              type: 'pie',
+              data: {
+                labels: graph4_label,
+                datasets: [{
+                  label: 'amount in rupees',
+                  data: graph4_data,
+
+                }]
+              },
+              options: {
+
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          </script>
+<!-- graph 5-->
+          <script type="text/javascript">
+            var g1 = document.getElementById('graph5');
+            new Chart(g1, {
+              type: 'doughnut',
+              data: {
+                labels: graph5_label,
+                datasets: [{
+                  label: 'amount in rupees',
+                  data: graph5_total,
+                          backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(153, 102, 255, 0.5)',
+                    'rgba(255, 159, 64, 0.5)'
+                  ],
+                  borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                  ],
+                }]
+              },
+              options: {
+                  responsive: true,
+                animation: {
+                  animateScale: true,
+                  animateRotate: true
+                },
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          </script>
+</body>
+</html>

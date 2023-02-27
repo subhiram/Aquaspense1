@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add your electricity bill here</title>
+</head>
+<body>
+<h1>Add your electricity bills here</h1>
+<form method="post">
+    {% csrf_token %}
+    <label>transformer type</label><br>
+    <input type="text" placeholder="transformer type" name="transformer_type"><br>
+    <label>billed date</label><br>
+    <input type="date" name="billed_date"><br>
+    <label>start reading</label><br>
+    <input type="number" placeholder="reading here" name="start_read"><br>
+    <label>end reading</label><br>
+    <input type="text" placeholder="end reading" name="end_read"><br>
+    <label>bill_amount</label><br>
+    <input type="text" placeholder="amount" name="bill_amount"><br>
+    <label>bill notes</label><br>
+    <textarea placeholder="bill Notes" name="bill_notes"></textarea>
+    <input type="submit">
+</form><br>
+</body>
+</html>

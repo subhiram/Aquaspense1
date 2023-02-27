@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>worker expenses</title>
+</head>
+<body>
+<h1> add your workers expenses here</h1>
+<form method="post">
+    {% csrf_token %}
+    <label>worker Name</label><br>
+    <input type="text" placeholder="worker name name" name="worker_name"><br>
+    <label>paid date</label><br>
+    <input type="date" name="date"><br>
+    <label>amount</label><br>
+    <input type="text" placeholder="amount paid" name="amount"><br>
+    <label>workers notes</label><br>
+    <textarea placeholder="workers Notes" name="worker_notes"></textarea>
+    <input type="submit">
+</form><br>
+</body>
+</html>

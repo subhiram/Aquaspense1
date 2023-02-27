@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add your daily feed </title>
+</head>
+<body>
+<h1>add your daily feed here</h1>
+<form method="post">
+    {% csrf_token %}
+    <label>date</label><br>
+    <input type="date" name="date"><br>
+    <label for="tank_no">tank no</label><br>
+    <!--<input type="text" placeholder="tank no" name="tank_no"><br>-->
+    <select name="tank_no">
+        <option value="A1">A1</option>
+        <option value="A2">A2</option>
+        <option value="B1">B1</option>
+        <option value="B2">B2</option>
+    </select>
+
+    <label>First feed (9am)</label><br>
+    <input type="number" placeholder="first feed" name="first"><br>
+    <label>second feed</label><br>
+    <input type="number" placeholder="second feed" name="second"><br>
+    <label>third feed</label><br>
+    <input type="number" placeholder="third feed" name="third"><br>
+    <label>fourth feed</label><br>
+    <input type="number" placeholder="fourth feed" name="fourth"><br>
+    <input type="submit">
+</form><br>
+<br>
+<a href="/sub/{{ cropid }}"> back to dashboard</a>
+<a href="{% url 'main_dash' %}">dashboard</a>
+</body>
+</html>

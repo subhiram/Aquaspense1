@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add a new crop</title>
+</head>
+<body>
+<h1>Add your new crop here</h1>
+<form method="post">
+    {% csrf_token %}
+    <label>Crop Name</label><br>
+    <input type="text" placeholder="crop name" name="crop_name"><br>
+    <label>crop start date</label><br>
+    <input type="date" name="crop_date"><br>
+    <label>crop notes</label><br>
+    <textarea placeholder="crop Notes" name="crop_notes"></textarea>
+    <input type="submit">
+</form><br>
+</body>
+</html>

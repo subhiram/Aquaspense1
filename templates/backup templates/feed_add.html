@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add your feed</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <label>date</label><br>
+    <input type="date" name="date"><br>
+    <label>shop Name</label><br>
+    <input type="text" placeholder="shop name" name="shop_name"><br>
+    <label>Bill no</label><br>
+    <input type="text" placeholder="bill no" name="bill_no"><br>
+    <label>bill amount</label><br>
+    <input type="text" placeholder="bill amount" name="bill_amount"><br>
+    <label>quantity</label><br>
+    <input type="number" placeholder="quantity" name="quantity"><br>
+    <label>feed notes</label><br>
+    <textarea placeholder="feed Notes" name="feed_notes"></textarea>
+    <input type="submit">
+</form><br>
+</body>
+</html>

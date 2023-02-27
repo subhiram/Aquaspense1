@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add your exports</title>
+</head>
+<body>
+<h1>add your exports here</h1>
+<form method="post">
+    {% csrf_token %}
+    <label>date</label><br>
+    <input type="date" name="date"><br>
+    <label>tank no</label><br>
+    <input type="text" placeholder="tank no" name="tank_no"><br>
+    <label>material weight in kg</label><br>
+    <input type="number" placeholder="material weight" name="material_weight"><br>
+    <label>count</label><br>
+    <input type="text" placeholder="count" name="count"><br>
+    <label>amount</label><br>
+    <input type="text" placeholder="amount" name="amount"><br>
+    <label>export notes</label><br>
+    <textarea placeholder="export Notes" name="exp_notes"></textarea>
+    <input type="submit">
+</form><br>
+</body>
+</html>

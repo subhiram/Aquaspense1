@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.0/dist/chart.umd.min.js"></script>
+    <style>
+        .container{
+            width: 500px;
+            height: 500px;
+
+        }
+        body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+}
+
+.dough {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 100px 0;
+    width: 700px;
+    height: 700px;
+}
+
+h1 {
+    color: #333;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+canvas {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+    </style>
+</head>
+<body>
+    <div class="dough">
+        <h1> Expenses comparison</h1>
+        <canvas id="myChart"></canvas>
+    </div>
+    <div class="dough">
+        <h1> Expenses comparison using doughnut</h1>
+        <canvas id="dough"></canvas><br>
+    </div>
+    <div class="dough">
+        <h1> Final comparison using bar chart</h1>
+        <canvas id="final_chart_bar"></canvas><br>
+    </div>
+    <div class="dough">
+        <h1> Final comparison using doughnut</h1>
+        <canvas id="final_chart_dough"></canvas>
+    </div>
+    <div class="dough">
+        <h1> Final comparison using pie chart</h1>
+        <canvas id="final_chart_pie"></canvas>
+    </div>
+    <div class="dough">
+        <h1> Daily feed bar graph</h1>
+        <canvas id="daily_feed"></canvas>
+    </div>
+
+<!--bar graph for expenses estimate -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            var data = {{ labels|safe }};
+            var di = {{ data|safe }};
+            var final_label = {{ final_label|safe }};
+            var final_cost = {{ final_cost|safe }};
+            var a1_label = {{ a1_label|safe }};
+            var a1_total = {{ a1_total|safe }};
+            var a2_label = {{ a2_label|safe }};
+            var a2_total = {{ a2_total|safe }};
+            var b1_label = {{ b1_label|safe }};
+            var b1_total = {{ b1_total|safe }};
+            var b2_label = {{ b2_label|safe }};
+            var b2_total = {{ b2_total|safe }};
+
+        </script>
+          <script type="text/javascript">
+            var ctx = document.getElementById('myChart');
+            new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: data,
+                datasets: [{
+                  label: '# of Votes',
+                  data: di,
+
+                }]
+              },
+              options: {
+
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          </script>
+    <!--doughnut for the above expense data -->
+        <script>
+            var atc = document.getElementById('dough')
+            new Chart(atc,{
+                type: 'doughnut',
+                data:{
+                    labels:data,
+                    datasets: [{
+                        label:data,
+                        data:di,
+
+                    }]
+
+                },
+                options: {
+                  aspectRatio: 1|1,
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+        </script>
+<!--final cast and final estimate using bar graph -->
+
+<script type="text/javascript">
+            var vtx = document.getElementById('final_chart_bar');
+            new Chart(vtx, {
+              type: 'bar',
+              data: {
+                labels: final_label,
+                datasets: [{
+                  label: 'money spent and received',
+                  data: final_cost,
+
+                }]
+              },
+              options: {
+
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          </script>
+<!--doughnut chart for the final chart -->
+<script>
+            var atx = document.getElementById('final_chart_dough')
+            new Chart(atx,{
+                type: 'doughnut',
+                data:{
+                    labels:final_label,
+                    datasets: [{
+                        label:final_label,
+                        data:final_cost,
+
+                    }]
+
+                },
+                options: {
+                  aspectRatio: 1|1,
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+        </script>
+<!-- pie chart for the final chart -->
+<script>
+            var avc = document.getElementById('final_chart_pie')
+            new Chart(avc,{
+                type: 'pie',
+                data:{
+                    labels:final_label,
+                    datasets: [{
+                        label:final_label,
+                        data:final_cost,
+
+                    }]
+
+                },
+                options: {
+                  aspectRatio: 1|1,
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+        </script>
+<script type="text/javascript">
+            var gtx = document.getElementById('daily_feed');
+            new Chart(gtx, {
+              type: 'bar',
+              data: {
+                labels: a1_label,
+                datasets: [{
+                  label: 'money spent and received',
+                  data: a1_total,
+                },
+                    {
+                        data: a2_total
+                    }]
+              },
+              options: {
+
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          </script>
+
+      
+</body>
+</html>

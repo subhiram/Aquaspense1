@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>expenses</title>
+</head>
+<body>
+<h1>Add your expenses here..</h1>
+<form method="post">
+    {% csrf_token %}
+    <label>expense Name</label><br>
+    <input type="text" placeholder="expense name" name="exp_name"><br>
+    <label>expense Cost</label><br>
+    <input type="number" placeholder="expense Cost" name="exp_cost"><br>
+    <label>expense date</label><br>
+    <input type="date" name="exp_date"><br>
+    <label>expense paid to</label><br>
+    <input type="text" placeholder="expense paid to" name="exp_paidto"><br>
+    <label>expense notes</label><br>
+    <textarea placeholder="expense Notes" name="exp_notes"></textarea>
+    <input type="submit">
+</form><br>
+</body>
+</html>

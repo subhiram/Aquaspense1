@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sub dashboard</title>
+</head>
+<body>
+<h1>welcome to a sub dashboard</h1><br>
+<h3>{{ crops.crop_name }}</h3><br>
+<h3>{{ crops.crop_date }}</h3><br>
+<h2>yet to be added</h2><br>
+<a href="/add_expense/{{ crops.crop_id }}">add expenses</a><br>
+<a href="/add_workerexp/{{ crops.crop_id }}">add worker expenses</a><br>
+<a href="/add_feed/{{ crops.crop_id }}">add feed</a><br>
+<a href="/add_medicine/{{ crops.crop_id }}">add medicine</a><br>
+<a href="/add_elebill/{{ crops.crop_id }}">add electrical bills</a><br>
+<a href="/add_export/{{ crops.crop_id }}">add export</a><br>
+<a href="/add_daily_feed/{{ crops.crop_id }}">add daily feed</a><br>
+<a href="/complete_view/{{ crops.crop_id }}">view all</a><br>
+<a href="/insight/{{ crops.crop_id }}">get insights</a><br>
+</body>
+</html>

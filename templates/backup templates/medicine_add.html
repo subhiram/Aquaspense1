@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add your medicine</title>
+</head>
+<body>
+<h1>Add your medicine here</h1>
+<form method="post">
+    {% csrf_token %}
+    <label>medicine Name</label><br>
+    <input type="text" placeholder="medicine name" name="med_name"><br>
+    <label>date</label><br>
+    <input type="date" name="date"><br>
+    <label>Bill no</label><br>
+    <input type="text" placeholder="bill no" name="bill_no"><br>
+    <label>quantity</label><br>
+    <input type="text" placeholder="quantity" name="quantity"><br>
+    <label>amount</label><br>
+    <input type="text" placeholder="amount" name="amount"><br>
+    <label>medicine notes</label><br>
+    <textarea placeholder="medicine Notes" name="med_notes"></textarea>
+    <input type="submit">
+</form><br>
+</body>
+</html>
